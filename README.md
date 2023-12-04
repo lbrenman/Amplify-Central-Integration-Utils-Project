@@ -18,7 +18,7 @@ This readme describes the assets in the project and how to use them in your inte
 
 ## Import Project
 
-To use the project's assets you will need to import the project, *AmplifyCentralIntegrationUtils_Vx*, from the Amplify Integration Manager module under Environments.
+To use the project's assets you will need to import the project, *AmplifyCentralIntegrationUtils*, from the Amplify Integration Manager module under Environments.
 
 ![](https://i.imgur.com/nLqXQvY.png)
 ![](https://i.imgur.com/getEd3P.png)
@@ -42,6 +42,7 @@ There are many Data Objects that are used by the included Services but can also 
 * Consumer Organizations Payload - Amplify Platform Organization and Team of the Consumer Marketplace payload
 * Marketplace - Amplify Central Marketplace Object
 * Organization Payload - Amplify Platform Organization payload
+* Organization - Amplify Platform Organization object
 * Product - Amplify Central Product object
 * Product Plan - Amplify Central Product Plan object
 * Subscription - Amplify Central Marketplace Product Subscription object
@@ -79,3 +80,4 @@ The current list of services are:
 * *GetProductPlanFromSubscription* - Get the full Product Plan object from a subscription object
 * *GetSubscriptionApproversForProduct* - Get an array of subscription approvers for a Product object
 * *isConsumerOrgSubscriptionRequestFromWH* - Checks if a subscription webhook corresponds to a consumer or platform organization subscription request
+* *GetOrgFromOrgId* - Get organization from an organization id
