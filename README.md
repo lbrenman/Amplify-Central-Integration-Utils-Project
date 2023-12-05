@@ -12,6 +12,8 @@ Examples of integrations include:
 * Manage subscription approval requests for Marketplace Products through a third-party system such as Microsoft Teams or ServiceNow
 * Monetize API usage through a third-party billing system such as Recurly
 
+When implementing Amplify Marketplace Products subscription approval flows you need to respond to Amplify webhook calls, retrieve subscription, product and team data as well as perform other operations, for example, to notify the various stakeholders. While you can do this yourself in Amplify Integration, this project provides services for performing these tasks without requiring deep knowledge of the Amplify API's.
+
 You can import the project into your Amplify Integration tenant and then reference the connectors, data objects and services from your Amplify Integration project.
 
 This readme describes the assets in the project and how to use them in your integration.
@@ -62,11 +64,11 @@ For example, normally you would need a JSON Parse component and related Data Obj
 ![](https://i.imgur.com/2B7rf7M.png)
 ![](https://i.imgur.com/LvWAc5c.png)
 
-Instead, you can use the *AmplifyWebhookPayloadParser* Service to more easily JSON parse the Amplify Webhook that triggers your integration by just connecting the HTTP/S Server Post body to the Service input
+Instead, you can use the *AmplifyWebhookPayloadParser* Service to more easily JSON parse the Amplify Webhook that triggers your integration by just connecting the HTTP/S Server Post body to the Service input as shown below.
 ![](https://i.imgur.com/79QTWSo.png)
 ![](https://i.imgur.com/lL8QUk3.png)
 
-When using the utility project you don't need to know the Amplify Webhook payload schema or create data objects or variables.
+When using the utility project you don't need to know the Amplify Webhook payload schema or create data objects or variables as it is exposed by the service for you as shown above.
 
 As another example, in order to approve a Marketplace Product subscription request, you would need to know the API to call and the payload. Instead you can use the *ApproveSubscriptionFromSubscription* Service and simply pass in the subscription object (which is also the body.payload property of a subscription webhook) and two variables to the Service to approve/reject the request.
 ![](https://i.imgur.com/2boFo1f.png)
