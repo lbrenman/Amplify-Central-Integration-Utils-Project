@@ -48,6 +48,7 @@ There are many Data Objects that are used by the included Services but can also 
 * Product - Amplify Central Product object
 * Product Plan - Amplify Central Product Plan object
 * Subscription - Amplify Central Marketplace Product Subscription object
+* Subscriptions - Amplify Central Marketplace Product Subscription array object
 * Team Payload - Amplify Platform Team payload
 * Team Users - Amplify Platform Team Users array object
 * User Payload - Amplify Platform User payload
@@ -78,8 +79,10 @@ The current list of services are:
 * *ApproveSubscriptionFromSelfLink* - Approve subscription from a selfLink
 * *ApproveSubscriptionFromSubscription* - Approve subscription using a subscription object
 * *GetMarketplaceFromSubscription* - Get the full marketplace object from a subscription object
+* *GetOrgFromOrgId* - Get organization from an organization id
+* *GetPendingSubscriptions* - Get the array of pending subscriptions
 * *GetProductFromSubscription* - Get the full product object from a subscription object
 * *GetProductPlanFromSubscription* - Get the full Product Plan object from a subscription object
 * *GetSubscriptionApproversForProduct* - Get an array of subscription approvers for a Product object
+* *GetSubscriptionFromSelfLink* - Get the Subscription from Subscription selfLink
 * *isConsumerOrgSubscriptionRequestFromWH* - Checks if a subscription webhook corresponds to a consumer or platform organization subscription request
-* *GetOrgFromOrgId* - Get organization from an organization id
