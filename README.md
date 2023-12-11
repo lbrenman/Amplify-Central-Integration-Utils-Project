@@ -86,3 +86,10 @@ The current list of services are:
 * *GetSubscriptionApproversForProduct* - Get an array of subscription approvers for a Product object
 * *GetSubscriptionFromSelfLink* - Get the Subscription from Subscription selfLink
 * *isConsumerOrgSubscriptionRequestFromWH* - Checks if a subscription webhook corresponds to a consumer or platform organization subscription request
+
+## Future Ideas
+
+* Get API Specs (for single API or group of APIs)
+* Attach Documentation to Product
+* Attach Plan to Product
+* Create an Asset from a list of Resources
