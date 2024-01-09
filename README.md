@@ -18,7 +18,7 @@ You can import the project into your Amplify Integration tenant and then referen
 
 This readme describes the assets in the project and how to use them in your integration.
 
-## Import Project
+## Import Utils Project
 
 To use the project's assets you will need to import the project, *AmplifyCentralIntegrationUtils*, from the Amplify Integration Manager module under Environments.
 
@@ -86,6 +86,15 @@ The current list of services are:
 * *GetSubscriptionApproversForProduct* - Get an array of subscription approvers for a Product object
 * *GetSubscriptionFromSelfLink* - Get the Subscription from Subscription selfLink
 * *isConsumerOrgSubscriptionRequestFromWH* - Checks if a subscription webhook corresponds to a consumer or platform organization subscription request
+
+# Examples Project
+
+Also included in this repo is a second Amplify Integration Project of examples, called AmplifyCentralIntegrationExamples.
+
+It currently contains the following integrations that leverage the Utils project:
+
+* Marketplace Product Subscription Approver/Notifier using MS Teams and Email
+* Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email
 
 ## Future Ideas
 
