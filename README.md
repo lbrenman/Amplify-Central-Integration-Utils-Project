@@ -1,26 +1,43 @@
 # Amplify Central Integration Utils Project Readme
 
-This [**Amplify Central Integration Utils**](https://github.com/lbrenman/Amplify-Central-Integration-Utils-Project) project contains connectors, data objects and services to aid in creating integrations to Axway Amplify Central and Marketplace using Axway's Amplify Integration.
+This [**Amplify Central Integration Utilities**](https://github.com/lbrenman/Amplify-Central-Integration-Utils-Project) project, `AmplifyCentralIntegrationUtils`, contains connectors, data objects and services to aid in creating integrations to Axway Amplify Central and Marketplace using Axway's Amplify Integration.
 
 ![](https://i.imgur.com/bXu0h9r.png)
+
+The Connectors are for making API calls back to Amplify using an Amplify [**Service Account**](https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_service_accounts/index.html) client Id and secret.
+
+The Services implement common operations such parsing Amplify webhooks and approving subscriptions.
+
+The Data Objects define Amplify resources and webhooks and are used by the Services.
+
+You can import the utils project into your Amplify Integration tenant and then reference the connectors, data objects and services from your Amplify Integration project.
+
+This readme describes the assets in the project and how to use them in your integration.
 
 * You can learn about Amplify Integration [**here**](https://www.axway.com/en/products/amplify-integration)
 * You can learn about Amplify Central/Marketplace [**here**](https://www.axway.com/en/products/amplify-enterprise-marketplace)
 * You can learn about integrating with Amplify [**here**](https://docs.axway.com/bundle/amplify-central/page/docs/integrate_with_central/index.html)
 
-Examples of integrations include:
-* Manage subscription approval requests for Marketplace Products through a third-party system such as Microsoft Teams or ServiceNow
-* Monetize API usage through a third-party billing system such as Recurly
+## Examples
 
-When implementing Amplify Marketplace Products subscription approval flows you need to respond to Amplify webhook calls, retrieve subscription, product and team data as well as perform other operations, for example, to notify the various stakeholders. While you can do this yourself in Amplify Integration, this project provides services for performing these tasks without requiring deep knowledge of the Amplify API's.
+A separate Examples Project, `AmplifyCentralIntegrationExamples`, includes samples of useful Amplify Central integrations that use the utils project's resources.
 
-You can import the project into your Amplify Integration tenant and then reference the connectors, data objects and services from your Amplify Integration project.
+Here are some of the examples:
 
-This readme describes the assets in the project and how to use them in your integration.
 
-## Import Utils Project
+* Amplify Marketplace Product Subscription Approver/Notifier using MS Teams and Email
+* Amplify Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email
+* Amplify Central Agent notifier - for receiving notifications in MS Teams when an Agent is down
+* Amplify API Compliance notifier - for receiving notifications in MS Teams when a discovered API does not meet your organization's grade criteria for design and/or security
+* Amplify Marketplace Product Review moderated content notifier - for receiving notifications in MS Teams when a Marketplace Product Review does not meet your organizations criteria for Sentiment, Toxicity and/or PII
 
-To use the project's assets you will need to import the project, *AmplifyCentralIntegrationUtils*, from the Amplify Integration Manager module under Environments.
+These examples are described [**here**](https://gist.github.com/lbrenman/ba9640a5b1650a68c13bb98991090725).
+
+If you import the example project then you don't need to import the utils project separately as it's included in the project export.
+
+## Import Project
+
+To use the project's assets you will need to import the project from the Amplify Integration Manager module under Environments.
 
 ![](https://i.imgur.com/nLqXQvY.png)
 ![](https://i.imgur.com/getEd3P.png)
@@ -40,7 +57,9 @@ This project includes the following Connections that will aid in accessing data 
 
 There are many Data Objects that are used by the included Services but can also be used separately in your integrations.
 
-* Amplify Webhook - Amplify webhook payload
+Here are some:
+
+* Amplify Subscription Webhook - Amplify subscription webhook payload
 * Consumer Organizations Payload - Amplify Platform Organization and Team of the Consumer Marketplace payload
 * Marketplace - Amplify Central Marketplace Object
 * Organization Payload - Amplify Platform Organization payload
@@ -58,14 +77,12 @@ There are many Data Objects that are used by the included Services but can also 
 
 The Services are the main assets of the utility project. They enable you to more easily create integrations that integrate with Amplify Central and Marketplace by encapsulating operations such as parsing webhook payloads and approving subscriptions without needing to dig into the underlying details.
 
-> Note that the Services use the Data Objects and Connections
-
 For example, normally you would need a JSON Parse component and related Data Object (for your webook payload) or a Map component and related Extract variable (for your webhook payload) to parse a incoming Amplify webhook.
 
 ![](https://i.imgur.com/2B7rf7M.png)
 ![](https://i.imgur.com/LvWAc5c.png)
 
-Instead, you can use the *AmplifyWebhookPayloadParser* Service to more easily JSON parse the Amplify Webhook that triggers your integration by just connecting the HTTP/S Server Post body to the Service input as shown below.
+Instead, you can use the *AmplifyWebhookSubscriptionPayloadParser* Service to more easily JSON parse the Amplify Webhook that triggers your integration by just connecting the HTTP/S Server Post body to the Service input as shown below.
 ![](https://i.imgur.com/79QTWSo.png)
 ![](https://i.imgur.com/lL8QUk3.png)
 
@@ -74,8 +91,8 @@ When using the utility project you don't need to know the Amplify Webhook payloa
 As another example, in order to approve a Marketplace Product subscription request, you would need to know the API to call and the payload. Instead you can use the *ApproveSubscriptionFromSubscription* Service and simply pass in the subscription object (which is also the body.payload property of a subscription webhook) and two variables to the Service to approve/reject the request.
 ![](https://i.imgur.com/2boFo1f.png)
 
-The current list of services are:
-* *AmplifyWebhookPayloadParser* - Amplify webhook payload parser
+A partial list of Services are:
+* *AmplifySubscriptionWebhookPayloadParser* - Amplify Subscription webhook payload parser
 * *ApproveSubscriptionFromSelfLink* - Approve subscription from a selfLink
 * *ApproveSubscriptionFromSubscription* - Approve subscription using a subscription object
 * *GetMarketplaceFromSubscription* - Get the full marketplace object from a subscription object
@@ -86,15 +103,6 @@ The current list of services are:
 * *GetSubscriptionApproversForProduct* - Get an array of subscription approvers for a Product object
 * *GetSubscriptionFromSelfLink* - Get the Subscription from Subscription selfLink
 * *isConsumerOrgSubscriptionRequestFromWH* - Checks if a subscription webhook corresponds to a consumer or platform organization subscription request
-
-# Examples Project
-
-Also included in this repo is a second Amplify Integration Project of examples, called AmplifyCentralIntegrationExamples.
-
-It currently contains the following integrations that leverage the Utils project:
-
-* Marketplace Product Subscription Approver/Notifier using MS Teams and Email
-* Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email
 
 ## Future Ideas
 
