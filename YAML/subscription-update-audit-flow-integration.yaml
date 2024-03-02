@@ -1,0 +1,56 @@
+group: management
+apiVersion: v1alpha1
+kind: Integration
+title: Integrations for Marketplace Product Subscription Updates (su)
+name: suintegration
+spec:
+  description: This is a group of resources to be used for marketplace subscription update workflows
+---
+name: suintegration-secret
+kind: Secret
+apiVersion: v1alpha1
+title: Secret for Marketplace Product Subscription update integration webhook
+metadata:
+  scope:
+    kind: Integration
+    name: suintegration
+spec:
+    data:
+      Authorization: Basic YWJjZDoxMjM0
+---
+group: management
+apiVersion: v1alpha1
+kind: Webhook
+title: Webhook for Marketplace Product Subscription update integration
+name: suintegration-webhook
+metadata:
+  scope:
+    kind: Integration
+    name: suintegration
+spec:
+  enabled: true
+  url: https://<<YOUR HTTP/S SERVER URL>>/mpsauditor
+  auth:
+    secret:
+      name: suintegration-secret
+      key: Authorization
+---
+group: management
+apiVersion: v1alpha1
+kind: ResourceHook
+title: Resource Hook for Marketplace Product Subscription update integration
+name: suintegration-resourcehook
+metadata:
+  scope:
+    kind: Integration
+    name: suintegration
+spec:
+  triggers:
+    - group: catalog
+      kind: Subscription
+      name: "*"
+      type:
+      - updated
+      - deleted
+  webhooks:
+    - suintegration-webhook

@@ -1,0 +1,68 @@
+name: agent-status-changes-int
+kind: Integration
+apiVersion: v1alpha1
+title: Agents Status Changes Integration
+tags:
+- Agents
+spec:
+  description: Agents Status Changes Integration
+---
+name: agent-status-changes-int-secret
+kind: Secret
+apiVersion: v1alpha1
+title: Agents Status Changes Integration Secret
+metadata:
+  scope:
+    kind: Integration
+    name: agent-status-changes-int
+spec:
+    data:
+      Authorization: Basic YWJjZDoxMjM0
+---
+name: agent-status-changes-int-wh
+kind: Webhook
+apiVersion: v1alpha1
+title: Agents Status Changes Integration Webhook
+attributes:
+release: 1.0.0
+metadata:
+  scope:
+    kind: Integration
+    name: agent-status-changes-int
+spec:
+  enabled: true
+  url: https://<<YOUR HTTP/S SERVER URL>>/agentstatusnotifier
+  auth:
+    secret:
+      name: agent-status-changes-int-secret
+      key: Authorization
+---
+group: management
+apiVersion: v1alpha1
+kind: ResourceHook
+name: agent-status-changes-int-rh
+title: Agents Status Changes Integration Resource Hook
+metadata:
+  scope:
+    kind: Integration
+    name: agent-status-changes-int
+spec:
+  triggers:
+    - group: management
+      kind: DiscoveryAgent
+      name: "*"
+      scope:
+        kind: Environment
+        name: "aws"
+      type:
+      - updated
+    - group: management
+      kind: TraceabilityAgent
+      name: "*"
+      scope:
+        kind: Environment
+        name: "aws"
+      type:
+      - updated
+  webhooks:
+    - agent-status-changes-int-wh

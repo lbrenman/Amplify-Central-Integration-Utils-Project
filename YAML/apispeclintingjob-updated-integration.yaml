@@ -1,0 +1,56 @@
+name: apispeclintingjob-updated-integration
+kind: Integration
+apiVersion: v1alpha1
+title: APISpecLintingJob Updated Integration
+spec:
+    description: Integration for APISpecLintingJob updates
+---
+name: apispeclintingjob-updated-integration-secret
+kind: Secret
+apiVersion: v1alpha1
+title: Integration for APISpecLintingJob updates Secret
+metadata:
+  scope:
+    kind: Integration
+    name: apispeclintingjob-updated-integration
+spec:
+    data:
+      Authorization: Basic YWJjZDoxMjM0
+---
+name: apispeclintingjob-updated-integration-wh
+kind: Webhook
+apiVersion: v1alpha1
+title: API Service Updated Integration Webhook
+metadata:
+  scope:
+    kind: Integration
+    name: apispeclintingjob-updated-integration
+spec:
+    enabled: true
+    url: https://<<YOUR HTTP/S SERVER URL>>/acapicompliancenotifier
+    auth:
+      secret:
+        name: apispeclintingjob-updated-integration-secret
+        key: Authorization
+---
+group: management
+apiVersion: v1alpha1
+kind: ResourceHook
+name: apispeclintingjob-updated-integration-rh
+title: API Service Updated Integration Resource Hook
+metadata:
+  scope:
+    kind: Integration
+    name: apispeclintingjob-updated-integration
+spec:
+  triggers:
+    - group: management
+      kind: APISpecLintingJob
+      name: '*'
+      type:
+        - updated
+      scope:
+        kind: Environment
+        name: 'aws'
+  webhooks:
+    - apispeclintingjob-updated-integration-wh

@@ -1,0 +1,62 @@
+name: review-updated-integration
+kind: Integration
+apiVersion: v1alpha1
+title: Marketplace Review Created/Updated Integration
+spec:
+    description: Integration for Marketplace Review updates
+---
+name: review-updated-integration-secret
+kind: Secret
+apiVersion: v1alpha1
+title: Marketplace Review Created/Updated Integration Secret
+metadata:
+  scope:
+    kind: Integration
+    name: review-updated-integration
+spec:
+    data:
+      Authorization: Basic YWJjZDoxMjM0
+---
+name: review-updated-integration-wh
+kind: Webhook
+apiVersion: v1alpha1
+title: Marketplace Review Created/Updated Integration Webhook
+metadata:
+  scope:
+    kind: Integration
+    name: review-updated-integration
+spec:
+    enabled: true
+    url: https://<<YOUR HTTP/S SERVER URL>>/mpprwebhookhandler
+    auth:
+      secret:
+        name: review-updated-integration-secret
+        key: Authorization
+---
+group: management
+apiVersion: v1alpha1
+kind: ResourceHook
+name: review-updated-integration-rh
+title: Marketplace Review Created/Updated Integration Resource Hook
+metadata:
+  accessRights:
+    canChangeOwner: true
+    canDelete: true
+    canWrite: true
+    canRead: true
+  scope:
+    kind: Integration
+    name: review-updated-integration
+spec:
+  triggers:
+    - group: catalog
+      kind: ProductReview
+      name: '*'
+      type:
+        - created
+        - updated
+      scope:
+        kind: Product
+        name: '*'
+  webhooks:
+    - review-updated-integration-wh
