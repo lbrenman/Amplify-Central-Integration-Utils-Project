@@ -4,7 +4,7 @@ This [**Amplify Central Integration Utilities**](https://github.com/lbrenman/Amp
 
 ![](https://i.imgur.com/bXu0h9r.png)
 
-The Connectors are for making API calls back to Amplify using an Amplify [**Service Account**](https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_service_accounts/index.html) client Id and secret.
+The Connectors are for making API calls back to Amplify using an Amplify [**Service Account**](https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_service_accounts/index.html) client Id and secret. You can create a Service Account easily as described [**here**](https://blog.axway.com/product-insights/amplify-platform/axway-amplify-platform-api-calls).
 
 The Services implement common operations such parsing Amplify webhooks and approving subscriptions.
 
@@ -23,15 +23,17 @@ This readme describes the assets in the project and how to use them in your inte
 A separate Examples Project, `AmplifyCentralIntegrationExamples`, includes samples of useful Amplify Central integrations that use the utils project's resources.
 
 Here are some of the examples:
-* Amplify Marketplace Product Subscription Approver/Notifier using MS Teams and Email
-* Amplify Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email
-* Amplify Central Agent notifier - for receiving notifications in MS Teams when an Agent is down
-* Amplify API Compliance notifier - for receiving notifications in MS Teams when a discovered API does not meet your organization's grade criteria for design and/or security
-* Amplify Marketplace Product Review moderated content notifier - for receiving notifications in MS Teams when a Marketplace Product Review does not meet your organizations criteria for Sentiment, Toxicity and/or PII
+* **Amplify Marketplace Product Subscription Approver/Notifier using MS Teams and Email** - notify approval team of subscription request updates through MS Teams with buttons to approve/reject and notify the Product Team subscription approver via email
+* **Amplify Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email** - create ServiceNow incident on subscription request and notify approval team of subscription request updates through MS Teams with link to incident for approval/rejection inside of ServiceNow and notify the Product Team subscription approver via email
+* **Amplify Central Agent notifier** - for receiving notifications in MS Teams when an Agent is down
+* **Amplify API Compliance notifier** - for receiving notifications in MS Teams when a discovered API does not meet your organization's grade criteria for design and/or security
+* **Amplify Marketplace Product Review moderated content notifier** - for receiving notifications in MS Teams when a Marketplace Product Review does not meet your organizations criteria for Sentiment, Toxicity and/or PII
 
 These examples are described [**here**](https://gist.github.com/lbrenman/ba9640a5b1650a68c13bb98991090725).
 
 If you import the example project then you don't need to import the utils project separately as it's included in the project export.
+
+YAML files for creating the webhook and resource hooks in Amplify as described [**here**](https://blog.axway.com/product-insights/amplify-platform/central/create-an-amplify-central-integration-webhook-using-the-axway-cli) are included in the repo.
 
 ## Import Project
 
@@ -101,10 +103,3 @@ A partial list of Services are:
 * *GetSubscriptionApproversForProduct* - Get an array of subscription approvers for a Product object
 * *GetSubscriptionFromSelfLink* - Get the Subscription from Subscription selfLink
 * *isConsumerOrgSubscriptionRequestFromWH* - Checks if a subscription webhook corresponds to a consumer or platform organization subscription request
-
-## Future Ideas
-
-* Get API Specs (for single API or group of APIs)
-* Attach Documentation to Product
-* Attach Plan to Product
-* Create an Asset from a list of Resources
