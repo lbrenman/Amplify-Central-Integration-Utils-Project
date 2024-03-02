@@ -23,8 +23,6 @@ This readme describes the assets in the project and how to use them in your inte
 A separate Examples Project, `AmplifyCentralIntegrationExamples`, includes samples of useful Amplify Central integrations that use the utils project's resources.
 
 Here are some of the examples:
-
-
 * Amplify Marketplace Product Subscription Approver/Notifier using MS Teams and Email
 * Amplify Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email
 * Amplify Central Agent notifier - for receiving notifications in MS Teams when an Agent is down
