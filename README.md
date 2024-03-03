@@ -20,7 +20,7 @@ This readme describes the assets in the project and how to use them in your inte
 
 ## Examples
 
-A separate Examples Project, `AmplifyCentralIntegrationExamples`, includes samples of useful Amplify Central integrations that use the utils project's resources.
+An Examples Project, `AmplifyCentralIntegrationExamples`, includes samples of useful Amplify Central integrations that use the utils project's resources.
 
 Here are some of the examples:
 * **Amplify Marketplace Product Subscription Approver/Notifier using MS Teams and Email** - notify approval team of subscription request updates through MS Teams with buttons to approve/reject and notify the Product Team subscription approver via email
@@ -31,19 +31,19 @@ Here are some of the examples:
 
 These examples are described [**here**](https://gist.github.com/lbrenman/ba9640a5b1650a68c13bb98991090725).
 
-If you import the example project then you don't need to import the utils project separately as it's included in the project export.
-
 YAML files for creating the webhook and resource hooks in Amplify as described [**here**](https://blog.axway.com/product-insights/amplify-platform/central/create-an-amplify-central-integration-webhook-using-the-axway-cli) are included in the repo.
 
 ## Import Project
 
-To use the project's assets you will need to import the project from the Amplify Integration Manager module under Environments.
+To use the project's assets you will need to import the `AmplifyCentralIntegrationUtils` project from the Amplify Integration Manager module under Environments.
 
 ![](https://i.imgur.com/nLqXQvY.png)
 ![](https://i.imgur.com/getEd3P.png)
 
 Now you can access the resources that will be in the *AmplifyCentralIntegrationUtils* project
 ![](https://i.imgur.com/j1Q5dEQ.png)
+
+If you import the example project, `AmplifyCentralIntegrationExamples`,  then you don't need to import the utils project separately as it's included in the project export.
 
 ## Connectors
 
