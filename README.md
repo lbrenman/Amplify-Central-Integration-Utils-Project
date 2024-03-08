@@ -6,7 +6,7 @@ This [**Amplify Central Integration Utilities**](https://github.com/lbrenman/Amp
 
 The Connectors are for making API calls back to Amplify using an Amplify [**Service Account**](https://docs.axway.com/bundle/platform-management/page/docs/management_guide/managing_service_accounts/index.html) client Id and secret. You can create a Service Account easily as described [**here**](https://blog.axway.com/product-insights/amplify-platform/axway-amplify-platform-api-calls).
 
-The Services implement common operations such parsing Amplify webhooks and approving subscriptions.
+The Services implement common operations such as parsing Amplify webhooks, approving subscriptions and extracting entities from Amplify Central API responses.
 
 The Data Objects define Amplify resources and webhooks and are used by the Services.
 
