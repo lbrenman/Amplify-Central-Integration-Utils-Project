@@ -25,8 +25,8 @@ An Examples Project, `AmplifyCentralIntegrationExamples`, includes samples of us
 Here are some of the examples:
 * **Amplify Marketplace Product Subscription Approver/Notifier using MS Teams and Email** - notify approval team of subscription request updates through MS Teams with buttons to approve/reject and notify the Product Team subscription approver via email
 * **Amplify Marketplace Product Subscription Approver/Notifier using MS Teams, ServiceNow and Email** - create ServiceNow incident on subscription request and notify approval team of subscription request updates through MS Teams with link to incident for approval/rejection inside of ServiceNow and notify the Product Team subscription approver via email
-* **Amplify Central Agent notifier** - for receiving notifications in MS Teams when an Agent is down
 * **Marketplace Subscriber Notifier** - for sending an email notification to the Product Subscriber when the subscription request is approved/rejected
+* **Amplify Central Agent notifier** - for receiving notifications in MS Teams when an Agent is down
 * **Amplify API Compliance notifier** - for receiving notifications in MS Teams when a discovered API does not meet your organization's grade criteria for design and/or security
 * **Amplify Marketplace Product Review moderated content notifier** - for receiving notifications in MS Teams when a Marketplace Product Review does not meet your organizations criteria for Sentiment, Toxicity and/or PII
 
