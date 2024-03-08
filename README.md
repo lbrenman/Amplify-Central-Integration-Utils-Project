@@ -44,6 +44,7 @@ To use the project's assets you will need to import the `AmplifyCentralIntegrati
 Now you can create your own integrations that access the resources that will be in the *AmplifyCentralIntegrationUtils* project
 ![](https://i.imgur.com/j1Q5dEQ.png)
 
+You will need to edit the Connectors in the Utilities Project with your credentials. You may also need to edit variables in the integrations to customize the integrations to match your environment. One example is the Amplify Central base URL which is used to construct URLs to Amplify resources that are displayed in a MS Teams notification.
 
 ## Connectors
 
