@@ -1,0 +1,55 @@
+group: management
+apiVersion: v1alpha1
+kind: Integration
+title: Integrations for Marketplace Product Subscription Approvals Client Notifier
+name: mpsa-client-notifier-integration
+spec:
+  description: This is a group of resources to be used for marketplace subscription approval  Client Notifier
+---
+name: mpsa-client-notifier-integration-secret
+kind: Secret
+apiVersion: v1alpha1
+title: Secret for Marketplace Product Subscription Approvals  Client Notifier integration webhook
+metadata:
+  scope:
+    kind: Integration
+    name: mpsa-client-notifier-integration
+spec:
+    data:
+      Authorization: Basic YWJjZDoxMjM0
+---
+group: management
+apiVersion: v1alpha1
+kind: Webhook
+title: Webhook for Marketplace Product Subscription Approvals  Client Notifier integration
+name: mpsa-client-notifier-integration-webhook
+metadata:
+  scope:
+    kind: Integration
+    name: mpsa-client-notifier-integration
+spec:
+  enabled: true
+  url: https://<<YOUR HTTP/S SERVER URL>>/mpsawebhookhandler
+  auth:
+    secret:
+      name: mpsa-client-notifier-integration-secret
+      key: Authorization
+---
+group: management
+apiVersion: v1alpha1
+kind: ResourceHook
+title: Resource Hook for Marketplace Product Subscription Approvals Client Notifier integration
+name: mpsa-client-notifier-integration-resourcehook
+metadata:
+  scope:
+    kind: Integration
+    name: mpsa-client-notifier-integration
+spec:
+  triggers:
+    - group: catalog
+      kind: Subscription
+      name: "*"
+      type:
+      - updated
+  webhooks:
+    - mpsa-client-notifier-integration-webhook
