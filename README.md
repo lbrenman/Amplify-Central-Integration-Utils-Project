@@ -29,6 +29,10 @@ Here are some of the examples:
 * **Amplify Central Agent notifier** - for receiving notifications in MS Teams when an Agent is down
 * **Amplify API Compliance notifier** - for receiving notifications in MS Teams when a discovered API does not meet your organization's grade criteria for design and/or security
 * **Amplify Marketplace Product Review moderated content notifier** - for receiving notifications in MS Teams when a Marketplace Product Review does not meet your organizations criteria for Sentiment, Toxicity and/or PII
+* **Badge Server** - get shield.io badge endpoint JSON objects for various summary information pertaining to your Amplify Central/Marketplace instance. Examples inlcude:
+  * Environment API Call Success/Fail/Exception metrics
+  * Environment API Avg Response time
+  * Product Summary Metrics for number of product plans, reviews and subscriptions
 
 These examples are described [**here**](https://gist.github.com/lbrenman/ba9640a5b1650a68c13bb98991090725).
 
